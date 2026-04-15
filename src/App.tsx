@@ -38,7 +38,7 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-void text-[#fafafa] relative overflow-hidden">
+    <div className="min-h-screen  text-[#fafafa] relative overflow-hidden">
       {/* Background layers */}
       <NeonParticlesBg />
 
@@ -55,19 +55,42 @@ export default function App() {
         </div>
       )}
 
+      {/* Sticky Full-width Header */}
+      <GameHeader />
+
       {/* Main layout */}
       <div
         className="relative z-10 max-w-7xl mx-auto px-3 py-4"
-        style={{ paddingTop: isTestcaseRunning ? '48px' : '16px' }}
+        style={{ paddingTop: isTestcaseRunning ? '0px' : '0px' }}
       >
-        <GameHeader />
-
         {/* HUD Layout: Stacked for fully centered design */}
         <div className="mt-4 flex flex-col lg:flex-row justify-center items-stretch gap-6 w-full max-w-6xl mx-auto">
           {/* ── LEFT PANEL ── */}
           <div className="space-y-3 flex-1 min-w-[280px] flex flex-col">
-            <PlayerInfo />
             <MoveHistory />
+            <QuantumCircuitViewer />
+          </div>
+
+          {/* ── CENTER: BOARD ── */}
+          <div className="flex flex-col items-center">
+            {/* Select instruction */}
+            {/* <SelectInstruction /> */}
+
+            <div className="relative w-full" style={{ maxWidth: 380 }}>
+              <NeonBoard />
+              <EntanglementBeams />
+            </div>
+
+            <CollapseReasonMessage />
+
+            <div className="w-full max-w-[380px] mt-4">
+              <PlayerInfo />
+            </div>
+          </div>
+
+          {/* ── RIGHT PANEL ── */}
+          <div className="space-y-3 flex-1 min-w-[280px] flex flex-col">
+            <EntanglementGraphVis />
             <Suspense fallback={
               <div className="glass-panel p-3 text-center">
                 <p className="text-xs opacity-30">Loading Bloch...</p>
@@ -76,33 +99,13 @@ export default function App() {
               <BlochSphereGrid />
             </Suspense>
           </div>
-
-          {/* ── CENTER: BOARD ── */}
-          <div className="flex flex-col items-center">
-            {/* Select instruction */}
-            <SelectInstruction />
-
-            <div className="relative w-full" style={{ maxWidth: 380 }}>
-              <NeonBoard />
-              <EntanglementBeams />
-            </div>
-
-            <CollapseReasonMessage />
-          </div>
-
-          {/* ── RIGHT PANEL ── */}
-          <div className="space-y-3 flex-1 min-w-[280px] flex flex-col">
-            <EntanglementGraphVis />
-            {/* <MetricsHUD /> */}
-            <QuantumCircuitViewer />
-          </div>
         </div>
 
 
         {/* Footer */}
         <footer className="mt-6 text-center">
           <p className="font-mono text-xs opacity-15 tracking-wider">
-            QUANTUM COMPUTING CONFERENCE DEMO
+
           </p>
         </footer>
       </div>
@@ -123,43 +126,30 @@ export default function App() {
   );
 }
 
-function SelectInstruction() {
-  const selectedCells = useGameStore(s => s.selectedCells);
-  const gameOver = useGameStore(s => s.gameOver);
-  const currentPlayer = useGameStore(s => s.currentPlayer);
+// function SelectInstruction() {
+//   const selectedCells = useGameStore(s => s.selectedCells);
+//   const gameOver = useGameStore(s => s.gameOver);
+//   const currentPlayer = useGameStore(s => s.currentPlayer);
 
-  if (gameOver) return null;
+//   if (gameOver) return null;
 
-  const colorClass = currentPlayer === 'X' ? 'text-sky-500' : 'text-yellow-500';
+//   const colorClass = currentPlayer === 'X' ? 'text-sky-500' : 'text-yellow-500';
 
-  return (
-    <div className="mb-2 text-center">
-      {selectedCells.length === 0 ? (
-        <p className={`font-display text-xs tracking-wider ${colorClass} opacity-70`}>
-          SELECT FIRST CELL FOR {currentPlayer}
-        </p>
-      ) : (
-        <p className="font-display text-xs tracking-wider text-yellow-500 opacity-70">
-          CELL {selectedCells[0]} SELECTED — PICK SECOND CELL
-        </p>
-      )}
-    </div>
-  );
-}
+//   return (
+//     <div className="mb-2 text-center">
+//       {selectedCells.length === 0 ? (
+//         <p className={`font-display text-xs tracking-wider ${colorClass} opacity-70`}>
+//           SELECT FIRST CELL FOR {currentPlayer}
+//         </p>
+//       ) : (
+//         <p className="font-display text-xs tracking-wider text-yellow-500 opacity-70">
+//           CELL {selectedCells[0]} SELECTED — PICK SECOND CELL
+//         </p>
+//       )}
+//     </div>
+//   );
+// }
 
 function CollapseReasonMessage() {
-  const reason = useGameStore(s => (s as any).pendingCollapseReason);
-
-  if (!reason) return null;
-
-  return (
-    <div className="mt-6 text-center animate-pulse">
-      <div className="font-display text-lg tracking-wider text-yellow-500 font-bold mb-1">
-        Collapse occurring
-      </div>
-      <div className="text-sm font-mono opacity-80 text-gray-300">
-        {reason}
-      </div>
-    </div>
-  );
+  return null;
 }

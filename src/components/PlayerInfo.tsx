@@ -96,11 +96,12 @@ function PlayerCard({
 }) {
   const borderClass = color === 'cyan' ? 'border-sky-500' : 'border-yellow-500';
   const textClass = color === 'cyan' ? 'text-sky-500' : 'text-yellow-500';
+  const bgClass = color === 'cyan' ? 'bg-sky-500/10' : 'bg-yellow-500/10';
 
   return (
     <motion.div
-      className={`p-2 rounded-lg text-center ${
-        active ? borderClass : 'border border-gray-800/50'
+      className={`p-2 rounded-lg text-center border transition-colors ${
+        active ? `${borderClass} ${bgClass}` : 'border-[#27272a] bg-[#18181b]'
       } ${isWinner ? 'animate-pulse-neon' : ''}`}
       animate={active ? { scale: [1, 1.02, 1] } : {}}
       transition={{ duration: 1.5, repeat: Infinity }}

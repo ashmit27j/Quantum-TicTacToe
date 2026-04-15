@@ -16,13 +16,13 @@ export default function MoveHistory() {
   }, [history.length]);
 
   return (
-    <div className="glass-panel p-3">
-      <p className="font-display text-xs text-white tracking-widest text-center mb-2">
+    <div className="glass-panel p-3 flex flex-col h-[220px]">
+      <p className="font-display text-xs text-white tracking-widest text-center mb-2 shrink-0">
         CONSOLE
       </p>
       <div
         ref={scrollRef}
-        className="space-y-1 max-h-48 overflow-y-auto pr-1"
+        className="flex-1 overflow-y-auto pr-1 space-y-1"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
         {history.length === 0 && (

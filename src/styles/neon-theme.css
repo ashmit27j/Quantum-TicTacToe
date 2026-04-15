@@ -7,7 +7,7 @@
    ══════════════════════════════════════════════════════════════════════════════ */
 
 :root {
-  --void: #1e1e1e;
+  --void: #111114;
   --neon-cyan: #0ea5e9;
   --neon-magenta: #eab308;
   --neon-gold: #fde047;
@@ -33,7 +33,7 @@ html, body, #root {
 body {
   background: var(--void);
   color: #fafafa;
-  font-family: 'Exo 2', sans-serif;
+  font-family: 'Inter', sans-serif;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -233,7 +233,7 @@ body {
 
 /* ── Classical Mark ──────────────────────────────────────────────────────── */
 .classical-mark {
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 2rem;
   font-weight: 900;
   letter-spacing: 0.05em;
@@ -341,7 +341,7 @@ body {
 
 /* ── Neon Title Sign ─────────────────────────────────────────────────────── */
 .neon-sign {
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
   font-weight: 900;
   text-transform: uppercase;
   letter-spacing: 0.15em;
@@ -447,23 +447,24 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  padding: 8px;
-  text-align: center;
-  font-family: 'Orbitron', sans-serif;
-  font-size: 0.9rem;
-  font-weight: 700;
+  height: 61px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
   letter-spacing: 0.2em;
-  color: var(--neon-gold);
-  background: rgba(255, 215, 0, 0.1);
-  border-bottom: 1px solid var(--neon-gold);
+  color: #111114; /* Deep void background for contrast */
+  background: #eab308; /* Solid yellow / neon-magenta token */
+  border-bottom: 1px solid #ca8a04;
   z-index: 9998;
-  text-shadow: 0 0 10px var(--neon-gold);
-  animation: bannerPulse 1s ease-in-out infinite;
+  animation: bannerPulseSolid 1s ease-in-out infinite;
 }
 
-@keyframes bannerPulse {
-  0%, 100% { background: rgba(255, 215, 0, 0.05); }
-  50% { background: rgba(255, 215, 0, 0.15); }
+@keyframes bannerPulseSolid {
+  0%, 100% { background: #eab308; }
+  50% { background: #facc15; }
 }
 
 /* ── Win Rainbow ─────────────────────────────────────────────────────────── */
@@ -497,7 +498,7 @@ body {
 }
 
 .loading-title {
-  font-family: 'Orbitron', sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 2.5rem;
   font-weight: 900;
   letter-spacing: 0.2em;
