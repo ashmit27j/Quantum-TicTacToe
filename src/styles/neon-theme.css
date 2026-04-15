@@ -1,0 +1,546 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   NEON QUANTUM THEME — Cyberpunk Neon Lights
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  --void: #09090b;
+  --neon-cyan: #0ea5e9;
+  --neon-magenta: #eab308;
+  --neon-gold: #fde047;
+  --neon-green: #10b981;
+  --neon-violet: #8b5cf6;
+  --neon-red: #ef4444;
+  --glass-bg: #18181b;
+  --glass-border: #27272a;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--void);
+  color: #fafafa;
+  font-family: 'Exo 2', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+@keyframes crtScroll {
+  0% { background-position: 0 0; }
+  100% { background-position: 0 100vh; }
+}
+
+/* ── Glass Panel ─────────────────────────────────────────────────────────── */
+.glass-panel {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+}
+
+.glass-panel-strong {
+  background: rgba(10, 10, 50, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(100, 100, 255, 0.25);
+  border-radius: 16px;
+}
+
+/* ── Neon Text Glows ─────────────────────────────────────────────────────── */
+.neon-text-cyan {
+  color: var(--neon-cyan);
+}
+
+.neon-text-magenta {
+  color: var(--neon-magenta);
+}
+
+.neon-text-gold {
+  color: var(--neon-gold);
+}
+
+.neon-text-green {
+  color: var(--neon-green);
+}
+
+.neon-text-violet {
+  color: var(--neon-violet);
+}
+
+.neon-text-red {
+  color: var(--neon-red);
+}
+
+/* ── Neon Borders ────────────────────────────────────────────────────────── */
+.neon-border-cyan {
+  border: 1px solid var(--neon-cyan);
+  box-shadow:
+    0 0 5px var(--neon-cyan),
+    0 0 10px rgba(0, 240, 255, 0.3),
+    inset 0 0 5px rgba(0, 240, 255, 0.1);
+}
+
+.neon-border-magenta {
+  border: 1px solid var(--neon-magenta);
+  box-shadow:
+    0 0 5px var(--neon-magenta),
+    0 0 10px rgba(255, 0, 170, 0.3),
+    inset 0 0 5px rgba(255, 0, 170, 0.1);
+}
+
+.neon-border-gold {
+  border: 1px solid var(--neon-gold);
+  box-shadow:
+    0 0 5px var(--neon-gold),
+    0 0 10px rgba(255, 215, 0, 0.3),
+    inset 0 0 5px rgba(255, 215, 0, 0.1);
+}
+
+.neon-border-green {
+  border: 1px solid var(--neon-green);
+  box-shadow:
+    0 0 5px var(--neon-green),
+    0 0 10px rgba(0, 255, 68, 0.3),
+    inset 0 0 5px rgba(0, 255, 68, 0.1);
+}
+
+.neon-border-violet {
+  border: 1px solid var(--neon-violet);
+  box-shadow:
+    0 0 5px var(--neon-violet),
+    0 0 10px rgba(187, 0, 255, 0.3);
+}
+
+/* ── Button ─────────────────────────────────────────────────────────── */
+.neon-btn {
+  position: relative;
+  padding: 10px 24px;
+  font-family: 'Inter', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: var(--neon-green);
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid var(--neon-green);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.neon-btn:hover {
+  background: rgba(16, 185, 129, 0.2);
+  transform: translateY(-1px);
+}
+
+.neon-btn:active {
+  transform: translateY(0);
+}
+
+.neon-btn-cyan {
+  color: var(--neon-cyan);
+  border-color: var(--neon-cyan);
+  background: rgba(59, 130, 246, 0.1);
+}
+
+.neon-btn-cyan:hover {
+  background: rgba(59, 130, 246, 0.2);
+}
+
+.neon-btn-magenta {
+  color: var(--neon-magenta);
+  border-color: var(--neon-magenta);
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.neon-btn-magenta:hover {
+  background: rgba(239, 68, 68, 0.2);
+}
+
+/* ── Board Grid ──────────────────────────────────────────────────────────── */
+.quantum-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 110px);
+  gap: 8px;
+  position: relative;
+  justify-content: center;
+}
+
+.quantum-cell {
+  width: 110px;
+  height: 110px;
+  position: relative;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: #18181b;
+  border: 1px solid #27272a;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.quantum-cell:hover:not(.collapsed):not(.disabled) {
+  border-color: var(--neon-cyan);
+  background: #27272a;
+}
+
+.quantum-cell.selected {
+  border-color: var(--neon-gold) !important;
+}
+
+.quantum-cell.collapsed-x {
+  border-color: var(--neon-cyan);
+  background: rgba(59, 130, 246, 0.05);
+}
+
+.quantum-cell.collapsed-o {
+  border-color: var(--neon-magenta);
+  background: rgba(239, 68, 68, 0.05);
+}
+
+.quantum-cell.win-cell {
+  animation: winPulse 1s ease-in-out infinite;
+}
+
+@keyframes winPulse {
+  0%, 100% {
+    box-shadow: 0 0 10px var(--neon-gold);
+  }
+  50% {
+    box-shadow: 0 0 20px var(--neon-gold);
+  }
+}
+
+/* ── Superposition Mark ──────────────────────────────────────────────────── */
+.superposition-mark {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.65rem;
+  opacity: 0.7;
+  animation: superPulse 2s ease-in-out infinite;
+}
+
+@keyframes superPulse {
+  0%, 100% { opacity: 0.5; transform: scale(1); }
+  50% { opacity: 0.9; transform: scale(1.05); }
+}
+
+/* ── Classical Mark ──────────────────────────────────────────────────────── */
+.classical-mark {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2rem;
+  font-weight: 900;
+  letter-spacing: 0.05em;
+}
+
+.classical-mark-x {
+  color: var(--neon-cyan);
+}
+
+.classical-mark-o {
+  color: var(--neon-magenta);
+}
+
+/* ── Grid Scan Line ──────────────────────────────────────────────────────── */
+.grid-scan-line {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg,
+    transparent,
+    rgba(0, 240, 255, 0.4),
+    rgba(187, 0, 255, 0.4),
+    transparent
+  );
+  animation: gridScan 4s linear infinite;
+  pointer-events: none;
+  z-index: 10;
+}
+
+@keyframes gridScan {
+  0% { top: -2px; opacity: 0; }
+  5% { opacity: 1; }
+  95% { opacity: 1; }
+  100% { top: 100%; opacity: 0; }
+}
+
+/* ── Collapse Flash ──────────────────────────────────────────────────────── */
+.collapse-flash {
+  position: fixed;
+  inset: 0;
+  background: white;
+  z-index: 10000;
+  pointer-events: none;
+  animation: collapseFlash 0.4s ease-out forwards;
+}
+
+@keyframes collapseFlash {
+  0% { opacity: 0.8; }
+  20% { opacity: 0.6; }
+  100% { opacity: 0; }
+}
+
+.collapse-shockwave {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid var(--neon-red);
+  z-index: 9999;
+  pointer-events: none;
+  animation: shockwave 0.6s ease-out forwards;
+}
+
+@keyframes shockwave {
+  0% {
+    width: 10px;
+    height: 10px;
+    opacity: 1;
+    border-width: 3px;
+  }
+  100% {
+    width: 120vw;
+    height: 120vw;
+    opacity: 0;
+    border-width: 1px;
+  }
+}
+
+/* ── Entanglement Beam ───────────────────────────────────────────────────── */
+.entanglement-beam {
+  position: absolute;
+  height: 2px;
+  background: linear-gradient(90deg,
+    var(--neon-violet),
+    var(--neon-cyan),
+    var(--neon-violet)
+  );
+  background-size: 200% 100%;
+  animation: beamFlow 1.5s linear infinite;
+  box-shadow:
+    0 0 4px var(--neon-violet),
+    0 0 8px rgba(187, 0, 255, 0.4);
+  pointer-events: none;
+  z-index: 5;
+}
+
+@keyframes beamFlow {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 200% 0%; }
+}
+
+/* ── Neon Title Sign ─────────────────────────────────────────────────────── */
+.neon-sign {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  animation: neonFlicker 3s ease-in-out infinite;
+}
+
+@keyframes neonFlicker {
+  0%, 100% { opacity: 1; }
+  92% { opacity: 1; }
+  93% { opacity: 0.6; }
+  94% { opacity: 1; }
+  96% { opacity: 0.8; }
+  97% { opacity: 1; }
+}
+
+/* ── Particles Background ────────────────────────────────────────────────── */
+.particles-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ── Fog Layer ───────────────────────────────────────────────────────────── */
+.fog-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.15;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(74, 0, 128, 0.4) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 30%, rgba(0, 240, 255, 0.2) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 80%, rgba(187, 0, 255, 0.3) 0%, transparent 50%);
+  animation: fogDrift 20s ease-in-out infinite alternate;
+}
+
+@keyframes fogDrift {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-20px, 10px) scale(1.05); }
+  100% { transform: translate(20px, -10px) scale(1); }
+}
+
+/* ── Circuit Viewer ──────────────────────────────────────────────────────── */
+.circuit-wire {
+  stroke: rgba(100, 100, 200, 0.4);
+  stroke-width: 1.5;
+}
+
+.circuit-gate {
+  rx: 4;
+  ry: 4;
+  stroke-width: 1.5;
+}
+
+.circuit-gate-h {
+  fill: rgba(0, 240, 255, 0.15);
+  stroke: var(--neon-cyan);
+}
+
+.circuit-gate-cx {
+  fill: rgba(255, 0, 170, 0.15);
+  stroke: var(--neon-magenta);
+}
+
+.circuit-gate-m {
+  fill: rgba(255, 255, 255, 0.15);
+  stroke: white;
+}
+
+.circuit-gate-cycle {
+  fill: rgba(255, 165, 0, 0.2);
+  stroke: orange;
+  animation: cycleWarning 0.5s ease-in-out infinite;
+}
+
+@keyframes cycleWarning {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+/* ── Scrollbar ───────────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 16, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 240, 255, 0.3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 240, 255, 0.5);
+}
+
+/* ── Testcase Banner ─────────────────────────────────────────────────────── */
+.testcase-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 8px;
+  text-align: center;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--neon-gold);
+  background: rgba(255, 215, 0, 0.1);
+  border-bottom: 1px solid var(--neon-gold);
+  z-index: 9998;
+  text-shadow: 0 0 10px var(--neon-gold);
+  animation: bannerPulse 1s ease-in-out infinite;
+}
+
+@keyframes bannerPulse {
+  0%, 100% { background: rgba(255, 215, 0, 0.05); }
+  50% { background: rgba(255, 215, 0, 0.15); }
+}
+
+/* ── Win Rainbow ─────────────────────────────────────────────────────────── */
+.rainbow-sweep {
+  background: linear-gradient(
+    90deg,
+    #ff0000, #ff7700, #ffff00, #00ff00, #00ffff, #0000ff, #8b00ff, #ff0000
+  );
+  background-size: 800% 100%;
+  animation: rainbowSweep 2s linear infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@keyframes rainbowSweep {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 800% 50%; }
+}
+
+/* ── Loading Screen ──────────────────────────────────────────────────────── */
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  background: var(--void);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+}
+
+.loading-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 900;
+  letter-spacing: 0.2em;
+  animation: loadFlicker 2s ease-in-out infinite;
+}
+
+@keyframes loadFlicker {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  11% { opacity: 0.3; }
+  12% { opacity: 1; }
+  30% { opacity: 1; }
+  31% { opacity: 0.5; }
+  32% { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+/* ── Modal Overlay ───────────────────────────────────────────────────────── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 16, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+/* ── Responsive ──────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .classical-mark {
+    font-size: 1.4rem;
+  }
+  .superposition-mark {
+    font-size: 0.5rem;
+  }
+}
