@@ -17,17 +17,11 @@ export default function QuantumCircuitViewer() {
     : null;
 
   if (!lastEvent) {
-    return (
-      <div className="glass-panel p-3 text-center flex flex-col items-center justify-center" style={{ minHeight: 320 }}>
-        <p className="font-display text-xs neon-text-cyan tracking-widest">QUANTUM CIRCUIT</p>
-        <p className="text-xs opacity-30 mt-3 font-body">No collapse circuit yet</p>
-        <p className="text-xs opacity-20 mt-1 font-body">Create a cycle to trigger collapse</p>
-      </div>
-    );
+    return null;
   }
 
   return (
-    <div className="glass-panel p-3 bg-opacity-70 dark:bg-gray-800 rounded-lg shadow-sm">
+    <div className="glass-panel p-3 flex flex-col items-center justify-center">
       <p className="font-display text-xs tracking-widest text-center mb-2 text-white">
         QUANTUM CIRCUIT
       </p>

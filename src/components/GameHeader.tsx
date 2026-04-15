@@ -44,7 +44,7 @@ export default function GameHeader() {
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
         >
-          NEON QUANTUM
+          QUANTUM TIC TAC TOE
         </motion.h1>
         <p className="font-display text-xs tracking-[0.25em] opacity-40 -mt-0.5">
           TIC TAC TOE IN THE QUANTUM REALM
@@ -79,11 +79,11 @@ export default function GameHeader() {
           active={isAutoPlaying}
         />
         <ControlBtn icon={<HelpCircle size={14} />} label="HELP" onClick={toggleHowToPlay} />
-        <ControlBtn
+        {/* <ControlBtn
           icon={isMuted ? <VolumeX size={14} /> : <Volume2 size={14} />}
           label={isMuted ? 'UNMUTE' : 'MUTE'}
           onClick={toggleMute}
-        />
+        /> */}
       </div>
     </header>
   );
@@ -104,10 +104,9 @@ function ControlBtn({
     <motion.button
       onClick={onClick}
       className={`flex items-center gap-1 px-2.5 py-1.5 rounded-md text-xs font-display tracking-wider
-        transition-all ${
-          active
-            ? 'border border-yellow-500 text-yellow-300 bg-yellow-900/10'
-            : 'border border-[#27272a] text-gray-400 hover:border-sky-500/50 hover:text-sky-400 hover:bg-sky-900/10'
+        transition-all ${active
+          ? 'border border-yellow-500 text-yellow-300 bg-yellow-900/10'
+          : 'border border-[#27272a] text-gray-400 hover:border-sky-500/50 hover:text-sky-400 hover:bg-sky-900/10'
         }`}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}

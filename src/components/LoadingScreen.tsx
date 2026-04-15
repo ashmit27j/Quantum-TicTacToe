@@ -30,7 +30,7 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
           className="loading-title neon-text-cyan mb-2"
           style={{ fontSize: 'clamp(1.5rem, 5vw, 2.5rem)' }}
         >
-          NEON QUANTUM
+          QUANTUM TIC TAC TOE
         </div>
         <motion.div
           initial={{ opacity: 0, width: 0 }}

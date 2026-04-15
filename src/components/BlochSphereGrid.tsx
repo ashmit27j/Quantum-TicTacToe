@@ -7,7 +7,7 @@ import * as THREE from 'three';
 function BlochSphere({ data, size = 0.8 }: { data: BlochSphereData; size?: number }) {
   const arrowRef = useRef<THREE.Group>(null);
   const isX = data.player === 'X';
-  const mainColor = isX ? '#3b82f6' : '#ef4444';
+  const mainColor = isX ? '#0ea5e9' : '#eab308';
 
   const sphereGeom = useMemo(() => new THREE.SphereGeometry(size, 24, 24), [size]);
   const wireGeom = useMemo(() => new THREE.SphereGeometry(size * 1.001, 16, 16), [size]);
@@ -56,10 +56,10 @@ function BlochSphere({ data, size = 0.8 }: { data: BlochSphereData; size?: numbe
       </group>
 
       {/* Poles — labeled with actual cell numbers */}
-      <Text position={[0, size * 1.15, 0]} fontSize={size * 0.14} color="#00aaff">
+      <Text position={[0, size * 1.15, 0]} fontSize={size * 0.14} color="#0ea5e9">
         {`|cell ${data.cells[0]}⟩`}
       </Text>
-      <Text position={[0, -size * 1.15, 0]} fontSize={size * 0.14} color="#ff4444">
+      <Text position={[0, -size * 1.15, 0]} fontSize={size * 0.14} color="#eab308">
         {`|cell ${data.cells[1]}⟩`}
       </Text>
 
@@ -92,7 +92,7 @@ export default function BlochSphereGrid() {
   }
 
   return (
-    <div className="glass-panel p-2 bg-opacity-70 dark:bg-gray-800 rounded-lg shadow-sm">
+    <div className="glass-panel p-3">
       <p className="font-display text-xs tracking-widest text-center mb-1 text-white">
         BLOCH SPHERES
       </p>
@@ -138,11 +138,11 @@ export default function BlochSphereGrid() {
             <div
               key={s.moveId}
               className="flex items-center gap-1 text-xs font-mono"
-              style={{ color: isX ? '#3b82f6' : '#ef4444' }}
+              style={{ color: isX ? '#0ea5e9' : '#eab308' }}
             >
               <span
                 className="inline-block w-2 h-2 rounded-full"
-                style={{ background: isX ? '#3b82f6' : '#ef4444', boxShadow: `0 0 4px ${isX ? '#3b82f6' : '#ef4444'}` }}
+                style={{ background: isX ? '#0ea5e9' : '#eab308', boxShadow: `0 0 4px ${isX ? '#0ea5e9' : '#eab308'}` }}
               />
               <span className="font-bold">{s.label}</span>
               <span className="opacity-50">

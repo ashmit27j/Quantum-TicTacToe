@@ -7,7 +7,7 @@
    ══════════════════════════════════════════════════════════════════════════════ */
 
 :root {
-  --void: #09090b;
+  --void: #1e1e1e;
   --neon-cyan: #0ea5e9;
   --neon-magenta: #eab308;
   --neon-gold: #fde047;
@@ -229,12 +229,6 @@ body {
   font-family: 'Orbitron', sans-serif;
   font-size: 0.65rem;
   opacity: 0.7;
-  animation: superPulse 2s ease-in-out infinite;
-}
-
-@keyframes superPulse {
-  0%, 100% { opacity: 0.5; transform: scale(1); }
-  50% { opacity: 0.9; transform: scale(1.05); }
 }
 
 /* ── Classical Mark ──────────────────────────────────────────────────────── */

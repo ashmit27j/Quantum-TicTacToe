@@ -50,7 +50,7 @@ function PlayerRadar() {
   ];
 
   return (
-    <div className="glass-panel p-3 bg-opacity-70 dark:bg-gray-800 rounded-lg shadow-sm">
+    <div className="glass-panel p-3">
       <p className="font-display text-xs tracking-widest text-center mb-1 text-white">
         PLAYER ADVANTAGE
       </p>
@@ -73,7 +73,7 @@ function QuantumBitCount() {
   const { totalQubits, totalEntropy, superpositionCount } = useQuantumSimulation();
 
   return (
-    <div className="glass-panel p-3 bg-opacity-70 dark:bg-gray-800 rounded-lg shadow-sm">
+    <div className="glass-panel p-3">
       <p className="font-display text-xs tracking-widest text-center mb-2 text-white">
         QUANTUM BITS
       </p>
@@ -83,11 +83,11 @@ function QuantumBitCount() {
           <div className="text-xs opacity-60">Active</div>
         </div>
         <div>
-          <div className="font-mono text-xl font-bold text-yellow-400">{totalEntropy.toFixed(1)}</div>
+          <div className="font-mono text-xl font-bold text-yellow-500">{totalEntropy.toFixed(1)}</div>
           <div className="text-xs opacity-60">Entropy</div>
         </div>
         <div>
-          <div className="font-mono text-xl font-bold text-purple-400">{superpositionCount}</div>
+          <div className="font-mono text-xl font-bold text-gray-300">{superpositionCount}</div>
           <div className="text-xs opacity-60">Superpos.</div>
         </div>
       </div>

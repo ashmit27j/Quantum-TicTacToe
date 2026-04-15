@@ -13,13 +13,12 @@ import EntanglementBeams from './components/EntanglementBeams';
 import CollapseAnimation from './components/CollapseAnimation';
 import PlayerInfo from './components/PlayerInfo';
 import MoveHistory from './components/MoveHistory';
-import CycleDetectorIndicator from './components/CycleDetectorIndicator';
-import QuantumCircuitViewer from './components/QuantumCircuitViewer';
 import MetricsHUD from './components/MetricsHUD';
 import EntanglementGraphVis from './components/EntanglementGraphVis';
 import GameModeSelector from './components/GameModeSelector';
 import HowToPlayModal from './components/HowToPlayModal';
 import SoundManager from './components/SoundManager';
+import QuantumCircuitViewer from './components/QuantumCircuitViewer';
 
 // Lazy load Bloch Spheres (heavy Three.js)
 const BlochSphereGrid = lazy(() => import('./components/BlochSphereGrid'));
@@ -64,12 +63,18 @@ export default function App() {
         <GameHeader />
 
         {/* HUD Layout: Stacked for fully centered design */}
-        <div className="mt-4 flex flex-col lg:flex-row justify-center items-start gap-6">
+        <div className="mt-4 flex flex-col lg:flex-row justify-center items-stretch gap-6 w-full max-w-6xl mx-auto">
           {/* ── LEFT PANEL ── */}
-          <div className="space-y-3">
+          <div className="space-y-3 flex-1 min-w-[280px] flex flex-col">
             <PlayerInfo />
             <MoveHistory />
-            <EntanglementGraphVis />
+            <Suspense fallback={
+              <div className="glass-panel p-3 text-center">
+                <p className="text-xs opacity-30">Loading Bloch...</p>
+              </div>
+            }>
+              <BlochSphereGrid />
+            </Suspense>
           </div>
 
           {/* ── CENTER: BOARD ── */}
@@ -82,31 +87,22 @@ export default function App() {
               <EntanglementBeams />
             </div>
 
+            <CollapseReasonMessage />
           </div>
 
           {/* ── RIGHT PANEL ── */}
-          <div className="space-y-3">
-            <CycleDetectorIndicator />
-            <MetricsHUD />
+          <div className="space-y-3 flex-1 min-w-[280px] flex flex-col">
+            <EntanglementGraphVis />
+            {/* <MetricsHUD /> */}
+            <QuantumCircuitViewer />
           </div>
         </div>
 
-        {/* Bottom full-width: Bloch Spheres + Circuit Viewer */}
-        <div className="mt-4 grid grid-cols-1 lg:grid-cols-2 gap-4">
-          <Suspense fallback={
-            <div className="glass-panel p-3 text-center">
-              <p className="text-xs opacity-30">Loading Bloch Spheres...</p>
-            </div>
-          }>
-            <BlochSphereGrid />
-          </Suspense>
-          <QuantumCircuitViewer />
-        </div>
 
         {/* Footer */}
         <footer className="mt-6 text-center">
           <p className="font-mono text-xs opacity-15 tracking-wider">
-            NEON QUANTUM v1.0 | QUANTUM COMPUTING CONFERENCE DEMO
+            QUANTUM COMPUTING CONFERENCE DEMO
           </p>
         </footer>
       </div>
@@ -147,6 +143,23 @@ function SelectInstruction() {
           CELL {selectedCells[0]} SELECTED — PICK SECOND CELL
         </p>
       )}
+    </div>
+  );
+}
+
+function CollapseReasonMessage() {
+  const reason = useGameStore(s => (s as any).pendingCollapseReason);
+
+  if (!reason) return null;
+
+  return (
+    <div className="mt-6 text-center animate-pulse">
+      <div className="font-display text-lg tracking-wider text-yellow-500 font-bold mb-1">
+        Collapse occurring
+      </div>
+      <div className="text-sm font-mono opacity-80 text-gray-300">
+        {reason}
+      </div>
     </div>
   );
 }

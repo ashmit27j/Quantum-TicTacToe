@@ -16,8 +16,6 @@ export default function NeonBoard() {
 
   return (
     <div className="relative">
-      {/* Scan line */}
-      <div className="grid-scan-line" />
 
       <div className="quantum-grid">
         {Array.from({ length: 9 }, (_, i) => {
@@ -90,6 +88,33 @@ export default function NeonBoard() {
                     background: 'radial-gradient(circle, rgba(255,215,0,0.15) 0%, transparent 70%)',
                   }}
                 />
+              )}
+
+              {/* Floating particles for superposition cells */}
+              {!classical && visibleMarks.length > 0 && (
+                <div className="absolute inset-0 overflow-hidden rounded-lg pointer-events-none">
+                  {[...Array(3)].map((_, k) => (
+                    <motion.div
+                      key={k}
+                      className="absolute w-1 h-1 rounded-full"
+                      style={{
+                        background: visibleMarks[0]?.startsWith('X') ? '#0ea5e9' : '#eab308',
+                        left: `${20 + k * 25}%`,
+                        top: `${30 + k * 15}%`,
+                      }}
+                      animate={{
+                        y: [-5, 5, -5],
+                        x: [-3, 3, -3],
+                        opacity: [0.3, 0.7, 0.3],
+                      }}
+                      transition={{
+                        duration: 2 + k * 0.5,
+                        repeat: Infinity,
+                        delay: k * 0.3,
+                      }}
+                    />
+                  ))}
+                </div>
               )}
             </div>
           );

@@ -59,9 +59,9 @@ export interface GameState {
   gameMode: GameMode;
   aiDifficulty: AIDifficulty;
 
-  // Cycle detection
   lastCycle: CycleResult | null;
   cycleDetected: boolean;
+  pendingCollapseReason?: string | null;
   collapseEvents: CollapseEvent[];
 
   // UI
@@ -137,6 +137,7 @@ const INITIAL_STATE = {
   moveTimestamps: [] as { player: Player; time: number }[],
   lastMoveTime: Date.now(),
   collapseSeed: 0,
+  pendingCollapseReason: null as string | null,
   replayIndex: -1,
   isReplaying: false,
   timeRemaining: 15,
@@ -233,11 +234,13 @@ export const useGameStore = create<GameState>()(
         const mode = state.gameMode;
         let shouldCollapse = false;
         let cycle: CycleResult | null = null;
+        let reason = '';
 
         if (mode === 'fast') {
           // Collapse every 2 moves
           if (newMoveCount % 2 === 0 && newMoveCount > 0) {
             shouldCollapse = true;
+            reason = 'Fast Mode Limit Reached.';
           }
         }
 
@@ -248,6 +251,7 @@ export const useGameStore = create<GameState>()(
           cycle = graph.findCycle();
           if (cycle) {
             shouldCollapse = true;
+            reason = 'Quantum cycle formulation detected.';
             set({ cycleDetected: true, lastCycle: cycle });
           }
         }
@@ -257,13 +261,16 @@ export const useGameStore = create<GameState>()(
           const overloaded = graph.overloadedCells(3);
           if (overloaded.length > 0) {
             cycle = graph.findCycle();
-            if (cycle) shouldCollapse = true;
+            if (cycle) {
+              shouldCollapse = true;
+              reason = 'Cell Density Critical Mass Reached.';
+            }
           }
         }
 
         if (shouldCollapse) {
-          // Use setTimeout to allow animation to show
-          setTimeout(() => get()._performCollapse(cycle), 100);
+          set({ pendingCollapseReason: reason });
+          setTimeout(() => get()._performCollapse(cycle), 2000);
         } else {
           // Switch player
           const nextPlayer: Player = state.currentPlayer === 'X' ? 'O' : 'X';
@@ -386,6 +393,7 @@ export const useGameStore = create<GameState>()(
           currentPlayer: winResult.winner || winResult.isDraw ? state.currentPlayer : nextPlayer,
           cycleDetected: false,
           lastCycle: null,
+          pendingCollapseReason: null,
           collapseSeed: state.collapseSeed + 1,
         });
 
