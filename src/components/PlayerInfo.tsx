@@ -103,8 +103,6 @@ function PlayerCard({
       className={`p-2 rounded-lg text-center border transition-colors ${
         active ? `${borderClass} ${bgClass}` : 'border-[#27272a] bg-[#18181b]'
       } ${isWinner ? 'animate-pulse-neon' : ''}`}
-      animate={active ? { scale: [1, 1.02, 1] } : {}}
-      transition={{ duration: 1.5, repeat: Infinity }}
     >
       <div className={`font-display text-xs tracking-wider ${active ? textClass : 'opacity-40'}`}>
         {label}
