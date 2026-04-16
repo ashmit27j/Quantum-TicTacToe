@@ -57,11 +57,11 @@ export default function GameHeader() {
 
   return (
     <>
-      <header className="sticky top-0 z-40 w-full bg-[#18181b] border-b border-[#27272a] shadow-lg min-h-[50px] flex items-center">
-        <div className="flex flex-row items-center w-full justify-between px-4 lg:px-8 py-2 max-w-[1400px] mx-auto">
+      <header className="sticky top-0 z-40 w-full bg-[#18181b] border-b border-[#27272a] shadow-lg min-h-12 flex items-center">
+        <div className="flex flex-row items-center w-full justify-between px-4 lg:px-8 py-2 max-w-[87.5rem] mx-auto">
           
           {/* Mobile Hamburger Icon Container */}
-          <div className="flex items-center justify-start md:hidden w-full">
+          <div className="flex items-center justify-start md:hidden w-full gap-3">
             <button 
               onClick={() => setIsDrawerOpen(true)}
               className="text-gray-400 hover:text-white p-1 -ml-1 flex items-center justify-center transition-colors hover:bg-[#27272a] rounded-md"
@@ -69,23 +69,19 @@ export default function GameHeader() {
             >
               <Menu size={24} />
             </button>
+            <span className="font-display font-bold text-sky-500 tracking-wide text-lg">QTTT</span>
           </div>
 
           {/* Title Section (Desktop Only) */}
           <div className="hidden md:flex flex-col items-start text-left shrink-0">
             <motion.h1
-              className="font-display font-bold leading-none"
-              style={{
-                color: '#0ea5e9',
-                fontSize: 'clamp(1rem, 1.5vw, 1.25rem)',
-                letterSpacing: '0.15em',
-              }}
+              className="font-display font-bold leading-none tracking-wide text-sky-500 text-lg md:text-xl"
               initial={{ x: -20, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
             >
               QUANTUM TIC TAC TOE
             </motion.h1>
-            <p className="font-display text-[0.65rem] tracking-[0.25em] opacity-40 mt-1.5">
+            <p className="font-display text-[0.65rem] tracking-wide opacity-40 mt-1.5">
               TIC TAC TOE IN THE QUANTUM REALM
             </p>
           </div>
@@ -96,7 +92,7 @@ export default function GameHeader() {
             <div>
               <button
                 onClick={toggleGameModeSelector}
-                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-display tracking-wider
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-display tracking-wide
               border border-violet-500/30 bg-violet-900/10 text-violet-300 hover:bg-violet-900/20 transition-all whitespace-nowrap"
               >
                 <Settings size={12} />
@@ -143,7 +139,7 @@ export default function GameHeader() {
               className="fixed top-0 left-0 h-full max-h-screen w-64 bg-[#18181b] border-r border-[#27272a] shadow-2xl z-[70] flex flex-col p-5 md:hidden overflow-y-auto"
             >
               <div className="flex justify-between items-center mb-8">
-                <span className="text-sky-500 font-display text-sm tracking-widest font-bold">MENU</span>
+                <span className="text-sky-500 font-display text-sm tracking-wide font-bold">MENU</span>
                 <button 
                   onClick={() => setIsDrawerOpen(false)}
                   className="text-gray-400 hover:text-white p-1 hover:bg-[#27272a] rounded-md transition-colors"
@@ -157,7 +153,7 @@ export default function GameHeader() {
                 {/* Mode badge */}
                 <button
                   onClick={() => { toggleGameModeSelector(); setIsDrawerOpen(false); }}
-                  className="inline-flex items-center justify-center gap-2 px-3 py-3 rounded-md text-xs font-display tracking-wider border border-violet-500/30 bg-violet-900/10 text-violet-300 hover:bg-violet-900/20 transition-all w-full mb-2"
+                  className="inline-flex items-center justify-center gap-2 px-3 py-3 rounded-md text-xs font-display tracking-wide border border-violet-500/30 bg-violet-900/10 text-violet-300 hover:bg-violet-900/20 transition-all w-full mb-2"
                 >
                   <Settings size={14} />
                   {MODE_LABELS[gameMode] || gameMode.toUpperCase()}
@@ -208,7 +204,7 @@ function ControlBtn({
   return (
     <motion.button
       onClick={onClick}
-      className={`flex items-center gap-1 px-2.5 py-1.5 rounded-md text-xs font-display tracking-wider
+      className={`flex items-center gap-1 px-2.5 py-1.5 rounded-md text-xs font-display tracking-wide
         transition-all ${active
           ? 'border border-yellow-500 text-yellow-300 bg-yellow-900/10'
           : 'border border-[#27272a] text-gray-400 hover:border-sky-500/50 hover:text-sky-400 hover:bg-sky-900/10'
@@ -236,7 +232,7 @@ function DrawerControlBtn({
   return (
     <button
       onClick={onClick}
-      className={`flex items-center gap-3 px-3 py-3 rounded-md text-sm font-display tracking-wider
+      className={`flex items-center gap-3 px-3 py-3 rounded-md text-sm font-display tracking-wide
         transition-all text-left w-full ${active
           ? 'border border-yellow-500 text-yellow-300 bg-yellow-900/10'
           : 'border border-[#27272a] text-gray-300 hover:border-sky-500/50 hover:text-sky-400 hover:bg-sky-900/10'

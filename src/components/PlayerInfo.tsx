@@ -23,11 +23,11 @@ export default function PlayerInfo() {
             transition={{ type: 'spring', stiffness: 400 }}
           >
             {isDraw ? (
-              <div className="font-display text-lg neon-text-gold tracking-wider">
+              <div className="font-display text-lg neon-text-gold tracking-wide">
                 DRAW
               </div>
             ) : (
-              <div className={`font-display text-lg tracking-wider ${
+              <div className={`font-display text-lg tracking-wide ${
                 winner === 'X' ? 'text-sky-500' : 'text-yellow-500'
               }`}>
                 {winner} WINS!
@@ -36,7 +36,7 @@ export default function PlayerInfo() {
           </motion.div>
         ) : (
           <div className="flex items-center justify-center gap-2">
-            <span className="font-display text-xs opacity-40 tracking-wider">TURN</span>
+            <span className="font-display text-xs opacity-40 tracking-wide">TURN</span>
             <motion.span
               key={currentPlayer}
               initial={{ scale: 0.5, opacity: 0 }}
@@ -104,7 +104,7 @@ function PlayerCard({
         active ? `${borderClass} ${bgClass}` : 'border-[#27272a] bg-[#18181b]'
       } ${isWinner ? 'animate-pulse-neon' : ''}`}
     >
-      <div className={`font-display text-xs tracking-wider ${active ? textClass : 'opacity-40'}`}>
+      <div className={`font-display text-xs tracking-wide ${active ? textClass : 'opacity-40'}`}>
         {label}
       </div>
       <div className={`font-mono text-lg font-bold ${textClass}`}>

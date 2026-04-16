@@ -96,8 +96,8 @@ export default function EntanglementGraphVis() {
   }, [edges, quantumMarks, classicalBoard]);
 
   return (
-    <div className="glass-panel p-3 flex flex-col justify-center items-center h-[220px]">
-      <p className="font-display text-xs tracking-widest text-center mb-1 text-white shrink-0">
+    <div className="glass-panel p-3 flex flex-col justify-center items-center h-56">
+      <p className="font-display text-xs tracking-wide text-center mb-1 text-white shrink-0">
         ENTANGLEMENT GRAPH
       </p>
       <canvas

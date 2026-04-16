@@ -51,7 +51,7 @@ function PlayerRadar() {
 
   return (
     <div className="glass-panel p-3">
-      <p className="font-display text-xs tracking-widest text-center mb-1 text-white">
+      <p className="font-display text-xs tracking-wide text-center mb-1 text-white">
         PLAYER ADVANTAGE
       </p>
       <ResponsiveContainer width="100%" height={160}>
@@ -74,7 +74,7 @@ function QuantumBitCount() {
 
   return (
     <div className="glass-panel p-3">
-      <p className="font-display text-xs tracking-widest text-center mb-2 text-white">
+      <p className="font-display text-xs tracking-wide text-center mb-2 text-white">
         QUANTUM BITS
       </p>
       <div className="grid grid-cols-3 gap-2 text-center">

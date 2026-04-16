@@ -22,7 +22,7 @@ export default function QuantumCircuitViewer() {
 
   return (
     <div className="glass-panel p-3 flex flex-col items-center justify-center">
-      <p className="font-display text-xs tracking-widest text-center mb-2 text-white">
+      <p className="font-display text-xs tracking-wide text-center mb-2 text-white">
         QUANTUM CIRCUIT
       </p>
       <CircuitDiagram event={lastEvent} />

@@ -13,8 +13,8 @@ export default {
         'neon-red': '#ff2222',
       },
       fontFamily: {
-        display: ['Orbitron', 'sans-serif'],
-        body: ['Exo 2', 'sans-serif'],
+        display: ['Outfit', 'sans-serif'],
+        body: ['Inter', 'sans-serif'],
         mono: ['JetBrains Mono', 'monospace'],
       },
       boxShadow: {

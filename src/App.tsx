@@ -62,7 +62,7 @@ export default function App() {
         {/* HUD Layout: Stacked for fully centered design */}
         <div className="mt-4 flex flex-col lg:flex-row justify-center items-stretch gap-6 w-full max-w-6xl mx-auto">
           {/* ── LEFT PANEL ── */}
-          <div className="order-2 lg:order-1 space-y-3 flex-1 min-w-[280px] flex flex-col">
+          <div className="order-2 lg:order-1 space-y-3 flex-1 min-w-72 flex flex-col">
             <MoveHistory />
             <QuantumCircuitViewer />
           </div>
@@ -72,20 +72,20 @@ export default function App() {
             {/* Select instruction */}
             {/* <SelectInstruction /> */}
 
-            <div className="relative w-full" style={{ maxWidth: 380 }}>
+            <div className="relative w-full max-w-sm">
               <NeonBoard />
               <EntanglementBeams />
             </div>
 
             <CollapseReasonMessage />
 
-            <div className="w-full max-w-[380px] mt-4">
+            <div className="w-full max-w-sm mt-4">
               <PlayerInfo />
             </div>
           </div>
 
           {/* ── RIGHT PANEL ── */}
-          <div className="order-3 space-y-3 flex-1 min-w-[280px] flex flex-col">
+          <div className="order-3 space-y-3 flex-1 min-w-72 flex flex-col">
             <EntanglementGraphVis />
             <Suspense fallback={
               <div className="glass-panel p-3 text-center">
@@ -103,7 +103,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Left: Credits */}
           <div className="flex flex-col items-center md:items-start text-center md:text-left gap-1.5">
-            <p className="font-display text-xs text-sky-500/70 tracking-widest uppercase">
+            <p className="font-display text-xs text-sky-500/70 tracking-wide uppercase">
               Created By
             </p>
             <p className="font-mono text-xs sm:text-sm text-gray-400 opacity-80 flex flex-wrap justify-center md:justify-start gap-2 sm:gap-3">
@@ -119,7 +119,7 @@ export default function App() {
 
           {/* Right: Links */}
           <div className="flex flex-col items-center md:items-end gap-1.5">
-            <p className="font-display text-xs text-sky-500/70 tracking-widest uppercase">
+            <p className="font-display text-xs text-sky-500/70 tracking-wide uppercase">
               Source Code
             </p>
             <a
@@ -163,11 +163,11 @@ export default function App() {
 //   return (
 //     <div className="mb-2 text-center">
 //       {selectedCells.length === 0 ? (
-//         <p className={\`font-display text-xs tracking-wider \${colorClass} opacity-70\`}>
+//         <p className={\`font-display text-xs tracking-wide \${colorClass} opacity-70\`}>
 //           SELECT FIRST CELL FOR {currentPlayer}
 //         </p>
 //       ) : (
-//         <p className="font-display text-xs tracking-wider text-yellow-500 opacity-70">
+//         <p className="font-display text-xs tracking-wide text-yellow-500 opacity-70">
 //           CELL {selectedCells[0]} SELECTED — PICK SECOND CELL
 //         </p>
 //       )}
@@ -183,7 +183,7 @@ function CollapseReasonMessage() {
   return (
     <div className="fixed top-24 left-1/2 -translate-x-1/2 z-[100] w-max max-w-[90vw]">
       <div className="bg-[#18181b]/95 backdrop-blur-sm border-2 border-yellow-500 shadow-[0_0_30px_rgba(234,179,8,0.3)] px-6 py-4 rounded-xl text-center transform transition-all">
-        <h3 className="font-display font-bold text-yellow-500 tracking-[0.15em] text-sm md:text-base animate-pulse">
+        <h3 className="font-display font-bold text-yellow-500 tracking-wide text-sm md:text-base animate-pulse">
           COLLAPSE OCCURRING
         </h3>
         <p className="font-mono text-xs md:text-sm text-gray-300 mt-2 opacity-80">

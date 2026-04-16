@@ -40,7 +40,7 @@ export default function GameModeSelector() {
             exit={{ scale: 0.9, y: 20 }}
             onClick={e => e.stopPropagation()}
           >
-            <h2 className="font-display text-xl neon-text-cyan text-center mb-4 tracking-widest">
+            <h2 className="font-display text-xl neon-text-cyan text-center mb-4 tracking-wide">
               SELECT GAME MODE
             </h2>
 
@@ -60,7 +60,7 @@ export default function GameModeSelector() {
                   <div className="flex items-center gap-3">
                     <span className="text-xl">{mode.icon}</span>
                     <div>
-                      <div className="font-display text-sm tracking-wider">
+                      <div className="font-display text-sm tracking-wide">
                         {mode.name}
                         {currentMode === mode.id && (
                           <span className="ml-2 text-xs neon-text-green">ACTIVE</span>
@@ -76,7 +76,7 @@ export default function GameModeSelector() {
             {/* AI Difficulty */}
             {currentMode === 'ai' && (
               <div className="mt-4 glass-panel p-3">
-                <p className="font-display text-xs neon-text-gold tracking-widest mb-2">
+                <p className="font-display text-xs neon-text-gold tracking-wide mb-2">
                   AI DIFFICULTY
                 </p>
                 <div className="flex gap-2">
@@ -84,7 +84,7 @@ export default function GameModeSelector() {
                     <button
                       key={d}
                       onClick={() => setAIDifficulty(d)}
-                      className={`flex-1 py-1.5 rounded text-xs font-display tracking-wider ${
+                      className={`flex-1 py-1.5 rounded text-xs font-display tracking-wide ${
                         aiDifficulty === d
                           ? 'neon-border-gold bg-yellow-900/20 text-yellow-300'
                           : 'border border-gray-700 opacity-50 hover:opacity-80'

@@ -9,7 +9,7 @@ export default function CycleDetectorIndicator() {
 
   return (
     <div className="glass-panel p-3">
-      <p className="font-display text-xs text-white tracking-widest text-center mb-2">
+      <p className="font-display text-xs text-white tracking-wide text-center mb-2">
         CYCLE DETECTOR
       </p>
 
@@ -22,7 +22,7 @@ export default function CycleDetectorIndicator() {
             exit={{ scale: 0.8, opacity: 0 }}
             className="text-center"
           >
-            <div className="text-yellow-500 font-display text-sm font-bold animate-pulse-neon tracking-wider">
+            <div className="text-yellow-500 font-display text-sm font-bold animate-pulse-neon tracking-wide">
               CYCLE FOUND!
             </div>
             <div className="text-xs text-yellow-500 opacity-70 mt-1">
@@ -37,7 +37,7 @@ export default function CycleDetectorIndicator() {
             exit={{ opacity: 0 }}
             className="text-center"
           >
-            <div className="text-emerald-500 font-display text-sm font-bold tracking-wider">
+            <div className="text-emerald-500 font-display text-sm font-bold tracking-wide">
               NO CYCLE
             </div>
             <div className="text-xs opacity-40 mt-1">

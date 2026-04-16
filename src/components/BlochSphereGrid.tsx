@@ -83,7 +83,7 @@ export default function BlochSphereGrid() {
   if (activeSpheres.length === 0) {
     return (
       <div className="glass-panel p-3 text-center">
-        <p className="font-display text-xs text-white tracking-widest">
+        <p className="font-display text-xs text-white tracking-wide">
           BLOCH SPHERES
         </p>
         <p className="text-xs opacity-30 mt-1 font-body">No active superpositions</p>
@@ -93,7 +93,7 @@ export default function BlochSphereGrid() {
 
   return (
     <div className="glass-panel p-3">
-      <p className="font-display text-xs tracking-widest text-center mb-1 text-white">
+      <p className="font-display text-xs tracking-wide text-center mb-1 text-white">
         BLOCH SPHERES
       </p>
       <div style={{ height: 320, width: '100%' }}>

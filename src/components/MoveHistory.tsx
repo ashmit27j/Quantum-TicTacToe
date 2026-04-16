@@ -16,8 +16,8 @@ export default function MoveHistory() {
   }, [history.length]);
 
   return (
-    <div className="glass-panel p-3 flex flex-col h-[220px]">
-      <p className="font-display text-xs text-white tracking-widest text-center mb-2 shrink-0">
+    <div className="glass-panel p-3 flex flex-col h-56">
+      <p className="font-display text-xs text-white tracking-wide text-center mb-2 shrink-0">
         CONSOLE
       </p>
       <div

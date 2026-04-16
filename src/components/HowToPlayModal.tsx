@@ -114,7 +114,7 @@ export default function HowToPlayModal() {
                           {sec.num}
                         </span>
                         <h3
-                          className="font-display text-sm tracking-wider font-bold"
+                          className="font-display text-sm tracking-wide font-bold"
                           style={{ color: sec.color }}
                         >
                           {sec.title}
@@ -131,7 +131,7 @@ export default function HowToPlayModal() {
 
             {/* Keyboard shortcuts */}
             <div className="mt-4 glass-panel p-3">
-              <p className="font-display text-xs neon-text-gold tracking-widest mb-2">
+              <p className="font-display text-xs neon-text-gold tracking-wide mb-2">
                 KEYBOARD SHORTCUTS
               </p>
               <div className="grid grid-cols-2 gap-1 text-xs">

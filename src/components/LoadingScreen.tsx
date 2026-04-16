@@ -48,7 +48,7 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
           className="text-center flex flex-col items-center"
         >
           <h1 
-            className="font-display font-bold leading-none tracking-[0.2em] text-white uppercase mb-5"
+            className="font-display font-bold leading-none tracking-wide text-white uppercase mb-5"
             style={{ fontSize: 'clamp(1rem, 3.5vw, 1.5rem)' }}
           >
             QUANTUM TIC TAC TOE
@@ -67,7 +67,7 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
             transition={{ delay: 0.9, duration: 0.5 }}
             className="mt-5"
           >
-            <p className="font-mono text-[0.7rem] tracking-[0.4em] text-gray-400 uppercase flex items-center justify-center w-full">
+            <p className="font-mono text-[0.7rem] tracking-wide text-gray-400 uppercase flex items-center justify-center w-full">
               Initializing
               <motion.span
                 className="inline-block w-4 text-left ml-1 text-sky-500"
